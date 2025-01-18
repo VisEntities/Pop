@@ -28,8 +28,8 @@ namespace Oxide.Plugins
             [JsonProperty("Version")]
             public string Version { get; set; }
 
-            [JsonProperty("Command")]
-            public string Command { get; set; }
+            [JsonProperty("Chat Command")]
+            public string ChatCommand { get; set; }
         }
 
         protected override void LoadConfig()
@@ -71,7 +71,7 @@ namespace Oxide.Plugins
             return new Configuration
             {
                 Version = Version.ToString(),
-                Command = "pop"
+                ChatCommand = "pop"
             };
         }
 
@@ -83,7 +83,7 @@ namespace Oxide.Plugins
         {
             _plugin = this;
             PermissionUtil.RegisterPermissions();
-            cmd.AddChatCommand(_config.Command, this, nameof(cmdPop));
+            cmd.AddChatCommand(_config.ChatCommand, this, nameof(cmdPop));
         }
 
         private void Unload()
